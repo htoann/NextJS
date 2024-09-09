@@ -3,6 +3,7 @@ import { AuthProvider } from '@/context/AuthContext';
 import { AntdRegistry } from '@ant-design/nextjs-registry';
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
+import Head from 'next/head';
 import './globals.scss';
 
 export const metadata = {
@@ -16,13 +17,15 @@ export default async function RootLayout({ children }) {
 
   return (
     <html lang={locale}>
+      <Head>
+        <link rel="icon" href="./favicon.ico" />
+      </Head>
       <body>
         <NextIntlClientProvider messages={messages}>
           <AntdRegistry>
             <AuthProvider>
               <AppProvider>{children}</AppProvider>
             </AuthProvider>
-            ,
           </AntdRegistry>
         </NextIntlClientProvider>
       </body>
