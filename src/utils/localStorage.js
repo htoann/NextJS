@@ -1,4 +1,8 @@
+const isClient = typeof window !== 'undefined';
+
 const getLocalStorage = (key) => {
+  if (!isClient) return null;
+
   const data = localStorage.getItem(key);
 
   try {
@@ -9,11 +13,15 @@ const getLocalStorage = (key) => {
 };
 
 const setLocalStorage = (key, value) => {
+  if (!isClient) return;
+
   const stringify = typeof value !== 'string' ? JSON.stringify(value) : value;
-  return localStorage.setItem(key, stringify);
+  localStorage.setItem(key, stringify);
 };
 
 const removeLocalStorage = (key) => {
+  if (!isClient) return;
+
   localStorage.removeItem(key);
 };
 
