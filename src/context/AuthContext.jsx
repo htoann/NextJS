@@ -51,11 +51,13 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  watchObject(window.localStorage, ['removeItem'], (method, key) => {
-    if (method === 'removeItem' && key === LOGGED_IN && isLoggedIn) {
-      setAuthState({ isLoggedIn: false, loading: false });
-    }
-  });
+  if (typeof window !== 'undefined') {
+    watchObject(window.localStorage, ['removeItem'], (method, key) => {
+      if (method === 'removeItem' && key === LOGGED_IN && isLoggedIn) {
+        setAuthState({ isLoggedIn: false, loading: false });
+      }
+    });
+  }
 
   const handleAuthSuccess = (token) => {
     const { access_token, refresh_token } = token;
