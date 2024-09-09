@@ -4,7 +4,7 @@ import { AntdRegistry } from '@ant-design/nextjs-registry';
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
 import Head from 'next/head';
-import './globals.scss';
+import './index.scss';
 
 export const metadata = {
   title: 'Create Next App',

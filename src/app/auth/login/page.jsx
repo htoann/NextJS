@@ -42,7 +42,10 @@ const Login = () => {
                 ]}
                 label={t('Common_Username')}
               >
-                <Input placeholder={t('Common_Username')} />
+                <Input
+                  placeholder={t('Common_Username')}
+                  style={{ height: 45 }}
+                />
               </Form.Item>
 
               <Form.Item
